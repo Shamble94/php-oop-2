@@ -6,7 +6,7 @@
         public $type;
         public $image;
         
-    
+    /* COSTRUTTO DELLA CLASSE PRODOTTI */
     function __construct($_name, $_price, $_type, $_image){
         $this->name = $_name;
         $this->price = $_price;
@@ -15,6 +15,7 @@
         
         
         }
+        /* FUNZIONE PER CONVERTIRE IN STRINGA L'ARRAY */
         public function getRaceAsString(){
             $race = [];
             foreach($this->type as $type){
@@ -24,41 +25,45 @@
             return  $race_string;
         }
     }
+
     /* CLASSE ANIMALI */
     class Animal{
         public $type;
-
+        /* COSTRUTTO CLASSE ANIMAL */
         function __construct($_type){
             $this->type = $_type;
         }
     }
+
     /* CLASSE CIBO */
     class Feed extends Products{
-    
         public $weight;
-      
-
+        /* COSTRUTTO CLASSE CIBO */
         function __construct($_name, $_price, $_type, $_image,  $_weight){
+            /* RICHIAMO COSTRUTTO CLASSE PADRE */
             parent::__construct($_name, $_price, $_type, $_image);
            
             $this->weight = $_weight;
         } 
     }
+    /* CLASSE ACCESSORI */
     class Accessory extends Products{
         public $utility;
-
+         /* COSTRUTTO CLASSE ACCESSORI */
         function __construct($_name, $_price,  $_type, $_image, $_utility){
+            /* RICHIAMO COSTRUTTO CLASSE PADRE */
             parent::__construct($_name, $_price, $_type, $_image);
             $this->utility = $_utility;
             
         }
     }   
-
+    /* CLASSE CUCCIE */
     class AnimalHouse extends Products{
         public $dimension;
         public $material;
-
+         /* COSTRUTTO CLASSE CUCCIE */
         function __construct($_name, $_price,  $_type, $_image ,$_dimension, $_material){
+            /* RICHIAMO COSTRUTTO CLASSE PADRE */
             parent::__construct($_name, $_price, $_type, $_image);
             $this->dimension = $_dimension;
             $this->material = $_material;
@@ -83,17 +88,19 @@
    
     $cuccia_1 = new AnimalHouse ("Voliera Wilma in Legno", 50.99, [$animal_4], "<img src=https://arcaplanet.vtexassets.com/arquivos/ids/258384/voliera-wilma1.jpg>", "50cm x 70cm", "Legno");
  
-  
+    /* ARRAY CUCCIE */
     $cuccie = [
         $cuccia_1,
 
     ];
+    /* ARRAY CIBI */
     $feeds = [
         $cibo_1,
         $cibo_2,
         $cibo_3,
         $cibo_4,
     ];
+    /* ARRAY ACCESSORI */
     $accessori = [
         $accessory_1,
         $accessory_2,
@@ -120,6 +127,7 @@
         <div class="row">
 
     <?php  
+    /* CICLO CIBI */
     foreach ($feeds as $cibo_animali){
         echo 
         "<div class=col-6>"."<div class=card>" 
@@ -127,6 +135,7 @@
         " " .$cibo_animali->getRaceAsString() ."<br>"."Immagine:".$cibo_animali->image . "<br>" ."Peso prodotto: " .$cibo_animali->weight
         ."</div>"."</div>"
         ;}
+        /* CICLO CUCCIA */
         foreach ($cuccie as $cuccia){
             echo 
             "<div class=col-6>"."<div class=card>" 
@@ -134,6 +143,7 @@
             " " .$cuccia->getRaceAsString() ."<br>"."Immagine:".$cuccia->image . "<br>" 
             ."</div>"."</div>"
             ;}
+            /* CICLO ACCESSORI */
             foreach ($accessori as $accessories){
                 echo 
                 "<div class=col-6>"."<div class=card>" 
