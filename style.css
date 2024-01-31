@@ -1,9 +1,19 @@
 img{
     width: 200px
 }
-.card{
-    border: none
-}
 .row{
     display: flex
+}
+.card{
+  
+    height: 400px !important;
+    line-height: 30px;
+    padding: 10px;
+    text-align: center;
+  
+    align-items: center;
+}
+.col-6{
+    margin: 0;
+    padding: 10px
 }

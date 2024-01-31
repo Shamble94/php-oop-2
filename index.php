@@ -4,12 +4,14 @@
         public $name;
         public $price;
         public $type;
+        public $image;
         
     
-    function __construct($_name, $_price, $_type){
+    function __construct($_name, $_price, $_type, $_image){
         $this->name = $_name;
         $this->price = $_price;
         $this->type = $_type;
+        $this->image = $_image;
         
         
         }
@@ -32,23 +34,22 @@
     }
     /* CLASSE CIBO */
     class Feed extends Products{
-        public $size;
+    
         public $weight;
-        public $image;
+      
 
-        function __construct($_name, $_price, $_type,  $_size, $_image, $_weight){
-            parent::__construct($_name, $_price, $_type);
-            $this->size = $_size;
-            $this->image = $_image;
+        function __construct($_name, $_price, $_type, $_image,  $_weight){
+            parent::__construct($_name, $_price, $_type, $_image);
+           
             $this->weight = $_weight;
         } 
     }
     class Accessory extends Products{
-        public $size;
+        public $utility;
 
-        function __construct($_name, $_price,  $_type, $_size){
-            parent::__construct($_name, $_price, $_type);
-            $this->size = $_size;
+        function __construct($_name, $_price,  $_type, $_image, $_utility){
+            parent::__construct($_name, $_price, $_type, $_image);
+            $this->utility = $_utility;
             
         }
     }   
@@ -57,8 +58,8 @@
         public $dimension;
         public $material;
 
-        function __construct($_name, $_price,  $_type, $_dimension, $_material){
-            parent::__construct($_name, $_price, $_type);
+        function __construct($_name, $_price,  $_type, $_image ,$_dimension, $_material){
+            parent::__construct($_name, $_price, $_type, $_image);
             $this->dimension = $_dimension;
             $this->material = $_material;
         }
@@ -70,41 +71,36 @@
     $animal_3 = new Animal ("Pesci");
     $animal_4 = new Animal ("Uccelli");
 
-    $cibo_1 = new Feed ("Royal canin mini adult", 10.99, [$animal_1], "Adulto", "<img src=https://arcaplanet.vtexassets.com/arquivos/ids/284621/Mini-Adult.jpg?v=638182891693570000>", "750g");
-    $cibo_2 = new Feed ("Almo Nature Holistic Maintenance Medium Large Tonno e Riso", 10.98, [$animal_1], "Qualsiasi", "<img src=https://arcaplanet.vtexassets.com/arquivos/ids/245173/almo-nature-holistic-cane-adult-medium-pollo-e-riso.jpg>" ,"200g");
-    
-    $cuccia_1 = new AnimalHouse ("Cuccia comfy", 50.99, [$animal_1, $animal_2], "50cm x 70cm", "Gomma");
-    $cuccia_2 = new AnimalHouse ("Bolla premium", 20.95, [$animal_3], "70cm", "Vetro");
-    $cuccia_3 = new AnimalHouse ("Gabbia Deluxe ", 15.99, [$animal_4], "100cm x 40cm", "Ferro");
+    $accessory_1 = new Accessory ("Cartucce Filtranti per Filtro EasyCrystal", 4.99, [$animal_3], "<img src=https://arcaplanet.vtexassets.com/arquivos/ids/272741/tetra-easycrystal-filterpack-250-300.jpg>","Pulizia acquario");
+    $accessory_2 = new Accessory ("Kong classic", 2.99, [$animal_1, $animal_2], "<img src=https://arcaplanet.vtexassets.com/arquivos/ids/256599/kong-classic1.jpg>","Divertimento e svago");
+    $accessory_3 = new Accessory("Topini di peluche Trixie", 7.99, [$animal_2], "<img src=https://arcaplanet.vtexassets.com/arquivos/ids/223852/trixie-gatto-gioco-active-mouse-peluche.jpg>","Divertimento per i tuoi amici felini");
 
-    $giocattolo_1 = new Accessory ("osso che suona al morso", 5.99, $animal_1, "Media");
+    $cibo_1 = new Feed ("Royal canin mini adult", 10.99, [$animal_1], "<img src=https://arcaplanet.vtexassets.com/arquivos/ids/284621/Mini-Adult.jpg?v=638182891693570000>", "750g");
+    $cibo_2 = new Feed ("Almo Nature Holistic Maintenance Medium Large Tonno e Riso", 10.98, [$animal_1],  "<img src=https://arcaplanet.vtexassets.com/arquivos/ids/245173/almo-nature-holistic-cane-adult-medium-pollo-e-riso.jpg>" ,"200g");
+    $cibo_3 = new feed ("Almo Nature Cat Daily Lattina", 5.99, [$animal_2], "<img src=https://arcaplanet.vtexassets.com/arquivos/ids/245336/almo-daily-menu-cat-400-gr-vitello.jpg>", " 400g" );
+    $cibo_4 = new feed ("Mangime per Pesci Guppy in Fiocchi", 5.99, [$animal_3], "<img src=https://arcaplanet.vtexassets.com/arquivos/ids/272714/tetra-guppy-mini-flakes.jpg>", " 100g" );
+
+   
+    $cuccia_1 = new AnimalHouse ("Voliera Wilma in Legno", 50.99, [$animal_4], "<img src=https://arcaplanet.vtexassets.com/arquivos/ids/258384/voliera-wilma1.jpg>", "50cm x 70cm", "Legno");
+ 
+  
     $cuccie = [
         $cuccia_1,
-        $cuccia_2,
-        $cuccia_3,
 
     ];
     $feeds = [
         $cibo_1,
         $cibo_2,
+        $cibo_3,
+        $cibo_4,
     ];
+    $accessori = [
+        $accessory_1,
+        $accessory_2,
+        $accessory_3,
+    ]
 
-    
-/*     echo "Lista cuccie";
-    foreach ($cuccie as $cuccia_animali){
-        echo
-        "<ul>" .
-        "<li>". "Nome articolo:". " " .$cuccia_animali->name ."<br>". "Prezzo:". " " .$cuccia_animali->price ."<br>" ."Per che animale è? : ". " " .$cuccia_animali->getRaceAsString() ."<br>" . "Grandezza: " .$cuccia_animali->dimension . "<br>". "Materiale: " .$cuccia_animali->material."</li>" 
-        ."</ul>";
-    }
 
-    echo "Lista cibo";
-    foreach ($feeds as $cibo_animali){
-        echo
-        "<ul>" .
-        "<li>". "Nome articolo:". " " .$cibo_animali->name ."<br>". "Prezzo:". " " .$cibo_animali->price ."<br>" ."Per che animale è? : ". " " .$cibo_animali->getRaceAsString() ."<br>" . "Fascia d'eta a cui somministrare: " .$cibo_animali->size . "<br>". "Peso prodotto: " .$cibo_animali->weight."</li>" 
-        ."</ul>";
-    } */
     ?>
 
 
@@ -120,12 +116,33 @@
     <title>Document</title>
 </head>
 <body>
-    </body>
+    <div class="container">
+        <div class="row">
+
     <?php  
     foreach ($feeds as $cibo_animali){
-        echo "<div class=container>". "<div class=row>".
-        "<div class=col-3>"."<div class=card>" . "Nome articolo:". " " .$cibo_animali->name ."<br>". $cibo_animali->image ."Prezzo:". " " .$cibo_animali->price ."<br>" ."Per che animale è? : ". " " .$cibo_animali->getRaceAsString() ."<br>" . "Fascia d'eta a cui somministrare: " .$cibo_animali->size . "<br>". "Peso prodotto: " .$cibo_animali->weight. "</div>". "</div>"
+        echo 
+        "<div class=col-6>"."<div class=card>" 
+        . "Nome articolo:". " " .$cibo_animali->name  ."<br>" ."Prezzo: ".$cibo_animali->price ."<br>" ."Per che animale è? : ". 
+        " " .$cibo_animali->getRaceAsString() ."<br>"."Immagine:".$cibo_animali->image . "<br>" ."Peso prodotto: " .$cibo_animali->weight
         ."</div>"."</div>"
-        ;
+        ;}
+        foreach ($cuccie as $cuccia){
+            echo 
+            "<div class=col-6>"."<div class=card>" 
+            . "Nome articolo:". " " .$cuccia->name ."<br>" ."Prezzo:".$cuccia->price ."<br>" ."Per che animale è? : ". 
+            " " .$cuccia->getRaceAsString() ."<br>"."Immagine:".$cuccia->image . "<br>" 
+            ."</div>"."</div>"
+            ;}
+            foreach ($accessori as $accessories){
+                echo 
+                "<div class=col-6>"."<div class=card>" 
+                . "Nome articolo:". " " .$accessories->name ."<br>" ."Prezzo:".$accessories->price ."<br>" ."Per che animale è? : ". 
+                " " .$accessories->getRaceAsString() ."<br>"."Immagine:".$accessories->image . "<br>" . "Utilizzo: ". $accessories->utility
+                ."</div>"."</div>"
+                ;
     } ?>
-        </html>
+        </div>
+    </div>
+</body>
+</html>
