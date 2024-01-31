@@ -71,7 +71,7 @@
     $animal_4 = new Animal ("Uccelli");
 
     $cibo_1 = new Feed ("Royal canin mini adult", 10.99, [$animal_1], "Adulto", "<img src=https://arcaplanet.vtexassets.com/arquivos/ids/284621/Mini-Adult.jpg?v=638182891693570000>", "750g");
-    $cibo_2 = new Feed ("chip chip", 10.98, [$animal_4], "Qualsiasi", "<img src=https://arcaplanet.vtexassets.com/arquivos/ids/245173/almo-nature-holistic-cane-adult-medium-pollo-e-riso.jpg>" ,"200g");
+    $cibo_2 = new Feed ("Almo Nature Holistic Maintenance Medium Large Tonno e Riso", 10.98, [$animal_1], "Qualsiasi", "<img src=https://arcaplanet.vtexassets.com/arquivos/ids/245173/almo-nature-holistic-cane-adult-medium-pollo-e-riso.jpg>" ,"200g");
     
     $cuccia_1 = new AnimalHouse ("Cuccia comfy", 50.99, [$animal_1, $animal_2], "50cm x 70cm", "Gomma");
     $cuccia_2 = new AnimalHouse ("Bolla premium", 20.95, [$animal_3], "70cm", "Vetro");
@@ -123,8 +123,9 @@
     </body>
     <?php  
     foreach ($feeds as $cibo_animali){
-        echo
-        "<div class=card>" . "Nome articolo:". " " .$cibo_animali->name ."<br>". $cibo_animali->image ."Prezzo:". " " .$cibo_animali->price ."<br>" ."Per che animale è? : ". " " .$cibo_animali->getRaceAsString() ."<br>" . "Fascia d'eta a cui somministrare: " .$cibo_animali->size . "<br>". "Peso prodotto: " .$cibo_animali->weight 
+        echo "<div class=container>". "<div class=row>".
+        "<div class=col-3>"."<div class=card>" . "Nome articolo:". " " .$cibo_animali->name ."<br>". $cibo_animali->image ."Prezzo:". " " .$cibo_animali->price ."<br>" ."Per che animale è? : ". " " .$cibo_animali->getRaceAsString() ."<br>" . "Fascia d'eta a cui somministrare: " .$cibo_animali->size . "<br>". "Peso prodotto: " .$cibo_animali->weight. "</div>". "</div>"
+        ."</div>"."</div>"
         ;
     } ?>
         </html>

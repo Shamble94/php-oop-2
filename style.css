@@ -1,3 +1,9 @@
 img{
     width: 200px
 }
+.card{
+    border: none
+}
+.row{
+    display: flex
+}
